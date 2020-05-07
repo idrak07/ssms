@@ -9,7 +9,5 @@ class PharmacyHomeController extends Controller
 {
     public function index(){
     	return view('pharmacyhome.index');
-    }
-
-	
+    }	
 }

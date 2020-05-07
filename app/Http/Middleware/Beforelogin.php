@@ -15,10 +15,15 @@ class Beforelogin
      */
     public function handle($request, Closure $next)
     {
-        if(session()->has('Id')){
+        if(session()->has('Pharmacyid')){
             session()->flash('msg', 'You need to logout first');
             return redirect()->route('pharmacyhome.index');
-        }else{
+        }
+        elseif(session()->has('Companyid')){
+            session()->flash('msg', 'You need to logout first');
+            return redirect()->route('companyhome.index');
+        }
+        else{
             return $next($request);
         }
     }

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PharmacyLoginRequest extends FormRequest
+class CompanyInventoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -19,12 +19,11 @@ class PharmacyLoginRequest extends FormRequest
     public function messages(){
 
         return [
-            'UserName.required' => 'UserName Required',
-            
-            'Password.required' =>'Password Required'
+            'medicinename.required' =>'Medicine name Required',
+            'batch.required' =>'Batch no. Required',
+            'box.required' =>'Quantity Required'
         ];
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -33,8 +32,9 @@ class PharmacyLoginRequest extends FormRequest
     public function rules()
     {
         return [
-            "UserName"         => "required" ,
-            "Password"      => "required"
+            "medicinename"     => "required",
+            "batch"     => "required",
+            "box" => "required"
         ];
     }
 }

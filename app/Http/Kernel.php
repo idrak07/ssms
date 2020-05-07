@@ -35,7 +35,6 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            \App\Http\Middleware\Pharmacybeforelogin::class,
         ],
 
         'api' => [
@@ -58,6 +57,8 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'pharmacysess' => \App\Http\Middleware\PharmacySessionVerify::class,
+        'companysess' => \App\Http\Middleware\CompanySessionVerify::class,
+        'sess' => \App\Http\Middleware\SessionVerify::class,
         'beforelogin' => \App\Http\Middleware\Beforelogin::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
     ];

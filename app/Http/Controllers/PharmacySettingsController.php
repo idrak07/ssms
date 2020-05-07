@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\DB;
 class PharmacySettingsController extends Controller
 {
     public function information(){
-    	$pharmacy = DB::table('pharmacies')->where('Id',session('pharmacyId'))->first();
-        //session()->put('lastname', $pharmacy-$pharmacyLastname);
+    	$pharmacy = DB::table('pharmacies')->where('Id',session('Pharmacyid'))->first();
+        session()->put('name', $pharmacy->UserName);
     	return $pharmacy;
     }
 
@@ -22,17 +22,17 @@ class PharmacySettingsController extends Controller
     public function updatepassword(PharmacyChangePasswordRequest $req){
 
         if(DB::table('pharmacies')
-            ->where('Id', $req->pharmacyid)
+            ->where('Id', session('Pharmacyid'))
             ->where('Password', $req->pharmacyOldPassword)
             ->update(['Password' => $req->pharmacyNewPassword])
             )
         {
-            return view('pharmacyhome.index');
+            return view('pharmacyhome.passwordchanged');
         }
         else
         {
-            $req->session()->flash('msg', 'Current Password Didnot match');
-            return redirect()->route('pharmacysetiings.changepassword');
+            $req->session()->flash('msgpharpass', 'Current Password Didnot Match');
+            return redirect()->route('pharmacysettings.changepassword');
         }
     }
 }

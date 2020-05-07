@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Middleware;
-use Illuminate\Support\Facades\Auth;
 
 use Closure;
 
-class Pharmacybeforelogin
+class CompanySessionVerify
 {
     /**
      * Handle an incoming request.
@@ -16,6 +15,10 @@ class Pharmacybeforelogin
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if($request->session()->has('Companyid')){
+            return $next($request);
+        }else{
+            return redirect()->route('login.index');
+        }
     }
 }

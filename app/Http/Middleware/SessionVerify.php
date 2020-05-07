@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class PharmacySessionVerify
+class SessionVerify
 {
     /**
      * Handle an incoming request.
@@ -15,7 +15,7 @@ class PharmacySessionVerify
      */
     public function handle($request, Closure $next)
     {
-        if($request->session()->has('Pharmacyid')){
+        if( $request->session()->has('Pharmacyid') || $request->session()->has('Companyid')){
             return $next($request);
         }else{
             return redirect()->route('login.index');

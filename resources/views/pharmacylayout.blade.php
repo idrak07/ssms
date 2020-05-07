@@ -1,8 +1,10 @@
 <html>
     <head>
         <title>App</title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/pharmacystyle.css') }}" >
-    <script src="js/jquery.js"></script>
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/customstyle.css') }}" >
+        <script src="js/jquery.js"></script>
+        <script src="js/jquery-1.11.3.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
     </head>
     <body>
         @yield('header')
@@ -10,28 +12,39 @@
         <table id="uptable">
             <td width = 1200>
                 <nav>
-                    <a href="/pharmacyhome">Home</a> |
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="/pharmacyhome"><font id="uplinkfont">Home</font></a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="/orderforsupply"><font id="uplinkfont">Make Supply Request</font></a> 
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                     <div class="dropdown">
-                      <button class="dropbtn">☰GoTo</button>
+                      <button class="dropbtn"><font id="uplinkfont">☰{{session('pharmacyname')}}</font></button>
                       <div class="dropdown-content">
-                        <a href="/admin">Admin</a>
-                        <a href="/manager">Manager</a>
-                        <a href="/member">Member</a>
-                        <a href="/mess">Mess</a>
+                        <a href="/pharmacyorderlist">Supply Request</a>  
+                        <a href="/pharmacyinventory">Inventory</a>
+                        <a href="/pharmacypurchaselist">Transactions</a> 
+                        <a href="/pharmacytax">Tax Status</a>
+                        <a href="/pharmacychangepassword">Change Password</a> 
+                        <a href="/logout"><font id="uplinkfont">Logout</font></a>
                       </div>
-                    </div> |
-                    <a href="/orderforsupply">Order</a> |
-                    <a href="/pharmacynotification">🔔Notification</a> |
-                    <a href="/pharmacysetting">Setting</a> |
-                    <a href="/pharmacychangepassword">Change Password</a> |
-                    <a href="/pharmacylogout">Logout</a>
+                    </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="/logout"><font id="uplinkfont">Logout</font></a>
                 </nav>
             </td>
         </table>
     </div>
-    @yield('orderforsupply')
     @yield('index')
+    @yield('orderforsupply')
+    @yield('placedorder')
+    @yield('processorder')
+    @yield('orderlist')
+    @yield('orderdetails')
+    @yield('purchaselist')
+    @yield('purchasedetails')
+    @yield('inventory')
+    @yield('tax')
     @yield('changepassword')
-    
+    @yield('passwordchanged') 
     </body>
 </html>
